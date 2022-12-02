@@ -1,0 +1,81 @@
+﻿<Page x:Class="BuildGroup.CryptoWallet.Frontend.Wpf.Pages.TransactionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BuildGroup.CryptoWallet.Frontend.Wpf.Pages"
+      mc:Ignorable="d" d:DesignWidth="800"
+      Title="TransactionsPage" Loaded="Page_Loaded" Height="509">
+
+    <Grid>
+        <TabControl>
+            <TabItem Header="Создание">
+                <StackPanel>
+                    <Label Content="Создание транзакции" HorizontalAlignment="Center" FontSize="22"/>
+                    <StackPanel HorizontalAlignment="Center" Margin="20">
+                        <Label>Id отправителя</Label>
+                        <TextBox FontSize="18" Width="300" Name="textBoxCreateFromIdUsername"></TextBox>
+                        <Label>Id получателя</Label>
+                        <TextBox FontSize="18" Width="300" Name="textBoxCreateToIdUsername"></TextBox>
+                        <Label>Сумма</Label>
+                        <TextBox FontSize="18" Width="300" Name="textBoxCreateAmount" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                        <Label>Тип транзакции</Label>
+                        <ComboBox Name="comboBoxType"></ComboBox>
+                        <Button Margin="0, 10" FontSize="16" Height="41" Name="buttonCreate" Click="ButtonCreate_OnClick">Создать</Button>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Поиск">
+                <StackPanel>
+                    <Label Content="Поиск транзакции" HorizontalAlignment="Center" FontSize="22"/>
+                    <StackPanel HorizontalAlignment="Center" Margin="7">
+                        <Label>Id транзакции</Label>
+                        <TextBox FontSize="18" Width="300" Name="textBoxFindId"></TextBox>
+                        <Button Margin="0, 10" FontSize="16" Height="41" Name="buttonFind" Click="ButtonFind_OnClick">Найти</Button>
+                        <StackPanel HorizontalAlignment="Center" >
+                            <Label>Id отправителя</Label>
+                            <TextBox FontSize="18" Width="300" Name="textboxFindFromUserId"></TextBox>
+                            <Label>Id получателя</Label>
+                            <TextBox FontSize="18" Width="300" Name="textboxFindToUserId"></TextBox>
+                            <Label>Сумма</Label>
+                            <TextBox FontSize="18" Width="300" Name="textboxFindAmount"></TextBox>
+                            <Label>Тип перевода</Label>
+                            <TextBox FontSize="18" Width="300" Name="textboxFindType"></TextBox>
+                            <Label>Валюта</Label>
+                            <TextBox FontSize="18" Width="300" Name="textboxFindCurrency"></TextBox>
+                            <Label>Дата</Label>
+                            <TextBox FontSize="18" Width="300" Name="textboxFindDate"></TextBox>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Удаление">
+                <StackPanel>
+                    <Label Content="Удаление транзакции" HorizontalAlignment="Center" FontSize="22"/>
+                    <StackPanel HorizontalAlignment="Center" Margin="20" >
+                        <Label>Id</Label>
+                        <TextBox FontSize="18" Width="300" Name="textBoxDeleteId"></TextBox>
+                        <Button Margin="0, 10" FontSize="16" Height="41" Name="buttonDelete" Click="ButtonDelete_OnClick">Удалить</Button>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Все транзакции">
+                <StackPanel HorizontalAlignment="Center" Margin="20" Width="800" >
+                    <Button Margin="0, 10" FontSize="16" Height="41" Width="400" Name="buttonLoadAllTransactions" Click="ButtonLoadAllTransactions_OnClick">Загрузить</Button>
+                    <DataGrid x:Name="dataGridTransactions" Width="735" FontSize="13" Height="316" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Id}" IsReadOnly="False" Header="Id" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding FromUserId}" IsReadOnly="False" Header="FromUserId" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding ToUserId}" IsReadOnly="False" Header="ToUserId" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding Amount}" IsReadOnly="False" Header="Amount" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding TransactionType}" IsReadOnly="False" Header="Type" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding CurrencyType}" IsReadOnly="False" Header="Currency" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding Date}" IsReadOnly="False" Header="Date" Width="148"/>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>
